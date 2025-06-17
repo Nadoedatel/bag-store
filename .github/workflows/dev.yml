@@ -1,0 +1,23 @@
+name: test, build
+
+on:
+  push:
+      branches: [ master, dev ]
+  pull_request:
+      branches: [ master, dev ]
+jobs:
+  dev-test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 18.x ]
+    steps:
+        - uses: actions/checkout@v4
+        - name: Staring Node.js ${{ matrix.node-version }}
+          uses: actions/setup-node@v4
+          with:
+            node-version: ${{ matrix.node-version }}
+        - name: Install modules
+          run: npm ci
+        - name: Run test
+          run: npm run test
