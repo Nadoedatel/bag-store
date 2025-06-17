@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import {ref} from "vue";
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
 
-const { to } = defineProps<{
+const props = defineProps<{
   to: string,
   text: string,
 }>()
@@ -13,6 +15,6 @@ const isTest = ref<boolean>(true)
   <router-link
     :to="to"
   >
-    <slot>{{ isTest ? text : '&nbsp;'}}</slot>
+    <slot>{{ isTest ? t(text) : '&nbsp;'}}</slot>
   </router-link>
 </template>

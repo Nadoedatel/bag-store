@@ -5,8 +5,8 @@ import NavHeaderItem from "@/components/nav/NavHeaderItem.vue";
 
 <template>
   <nav>
-    <NavHeaderItem to="/home" text="Home" />
-    <NavHeaderItem to="/about" text="About" />
-    <NavHeaderItem to="/basket" text="Payment Basket" />
+    <NavHeaderItem to="/home" text="message.Home" />
+    <NavHeaderItem to="/about" text="message.About" />
+    <NavHeaderItem to="/basket" text="message.Basket" />
   </nav>
 </template>
