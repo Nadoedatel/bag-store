@@ -5,14 +5,16 @@ const messages = {
     message: {
       Home: 'Home',
       About: 'About',
-      Basket: 'Basket'
+      Basket: 'Basket',
+      ChangeLanguage: 'English',
     }
   },
   ru: {
     message: {
       Home: 'Домой',
       About: 'О нас',
-      Basket: 'Корзина'
+      Basket: 'Корзина',
+      ChangeLanguage: 'Русский'
     }
   }
 };
