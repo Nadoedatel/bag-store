@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import NavHeaderItem from "@/components/nav/NavHeaderItem.vue";
+import NavHeaderItem from "@/components/header/nav/NavHeaderItem.vue";
 </script>
 
 <template>
