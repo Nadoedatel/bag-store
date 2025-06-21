@@ -12,7 +12,6 @@ const toggleDark = useToggle(isDark)
 <nav class="flex flex-row">
   <MyButton @click="toggleLanguage()" text="message.ChangeLanguage" />
   <MyButton data-testid="toggleDark" @click="toggleDark()"
-    class="transform"
   >
     <Transition name="fade" mode="out-in">
       <CiDark v-if="isDark" key="dark-icon" />

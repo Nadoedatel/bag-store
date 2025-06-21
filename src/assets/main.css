@@ -7,3 +7,12 @@
   margin: 0 auto;
   font-weight: normal;
 }
+
+html.dark {
+  @apply transition-colors duration-300 ease-in-out;
+}
+
+body,
+.bg-transition {
+  @apply transition-colors duration-300 ease-in-out;
+}
