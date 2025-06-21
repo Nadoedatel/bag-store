@@ -22,7 +22,10 @@ onMounted(() => {
 
 <template>
   <div>
-    <div v-if="arrProducts && arrProducts.length > 0">
+    <div
+      v-if="arrProducts && arrProducts.length > 0"
+      class="flex flex-row gap-5"
+    >
       <content-item
         v-for="productItem in arrProducts"
         :key="productItem.id"
