@@ -3,7 +3,7 @@ import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 
 const props = defineProps<{
-  text: string,
+  text?: string,
 }>()
 
 const emit = defineEmits(['click'])
@@ -15,11 +15,13 @@ const handleClick = () => {
 
 <template>
   <button
-    class="bg-gray-800 text-white rounded-xl p-2 cursor-pointer"
+    class="bg-[#202325] text-white rounded-xl p-2 cursor-pointer"
     @click="handleClick"
   >
     <slot>
-      {{ t(text) }}
+      <template v-if="text">
+        {{ t(text) }}
+      </template>
     </slot>
   </button>
 </template>

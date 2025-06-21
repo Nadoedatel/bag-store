@@ -5,7 +5,11 @@ import NavFooter from "@/components/footer/nav/NavFooter.vue";
 </script>
 
 <template>
-  <nav-header />
-  <router-view></router-view>
-  <nav-footer />
+  <div class="flex flex-col">
+    <nav-header />
+    <div>
+      <router-view></router-view>
+    </div>
+    <nav-footer />
+  </div>
 </template>
