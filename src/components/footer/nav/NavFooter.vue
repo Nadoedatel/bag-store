@@ -11,7 +11,7 @@ const toggleDark = useToggle(isDark)
 <template>
 <nav class="flex flex-row">
   <MyButton @click="toggleLanguage()" text="message.ChangeLanguage" />
-  <MyButton @click="toggleDark()"
+  <MyButton data-testid="toggleDark" @click="toggleDark()"
     class="transform"
   >
     <Transition name="fade" mode="out-in">
