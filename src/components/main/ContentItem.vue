@@ -1,11 +1,16 @@
 <script setup lang="ts">
 import {computed} from "vue";
+import MyButton from "@/components/ui/button/MyButton.vue";
 
 const props = defineProps({
   product: {
     type: Object,
     required: true,
-  }
+  },
+  updateCartQuantity: {
+    type: Function,
+    required: true,
+  },
 })
 
 const actualProduct = computed(() => {
@@ -34,7 +39,11 @@ const imageUrl = computed(() => {
       <div>
         <h1>{{ actualProduct.name }}</h1>
         <h2>{{ actualProduct.price }} р.</h2>
-        <h2 v-if="product.quantity">{{ product.quantity}}</h2>
+        <div v-if="product.quantity">
+          <h2>{{ product.quantity}}</h2>
+          <MyButton @click="updateCartQuantity(actualProduct.id, product.quantity, '+')" text="+" />
+          <MyButton @click="updateCartQuantity(actualProduct.id, product.quantity, '-')" text="-" />
+        </div>
         <h2>{{ actualProduct.availability === false ? "В наличии" : "Нету" }}</h2>
       </div>
     </template>

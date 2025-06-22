@@ -7,7 +7,7 @@ interface CartLogic {
   addToCart: (product: Product, quantity?: number) => void;
   removeProduct: (productId: number) => void;
   clearCart: () => void;
-  updateCartQuantity: (productId: number, quantity: number) => void;
+  updateCartQuantity: (productId: number, quantity: number, addOrSubtract: string) => void;
 }
 
 export function useCartLogic(itemsRef: Ref<CartItem[]>): CartLogic {
@@ -41,6 +41,8 @@ export function useCartLogic(itemsRef: Ref<CartItem[]>): CartLogic {
   }
 
   const removeProduct = (productId: number): void => {
+    console.log(itemsRef.value);
+    console.log(productId)
     itemsRef.value = itemsRef.value.filter(item => item.product.id !== productId);
     saveCartToLocalStorage()
   }
@@ -50,12 +52,17 @@ export function useCartLogic(itemsRef: Ref<CartItem[]>): CartLogic {
     saveCartToLocalStorage()
   }
 
-  const updateCartQuantity = (productId: number, quantity: number): void => {
+  const updateCartQuantity = (productId: number, quantity: number, addOrSubtract: string): void => {
     const item = itemsRef.value.find(item => item.product.id === productId);
     if (item) {
       if (quantity > 0) {
-        item.quantity = quantity;
-      } else {
+        if (addOrSubtract === "+") {
+          item.quantity += 1;
+        } else if (addOrSubtract === "-") {
+          item.quantity -= 1;
+        }
+      }
+      if (item.quantity <= 0) {
         removeProduct(productId)
       }
       saveCartToLocalStorage()

@@ -6,7 +6,7 @@ import MyButton from "@/components/ui/button/MyButton.vue";
 import {storeToRefs} from "pinia";
 
 const cartStore = useCartStore()
-const { removeProduct } = cartStore
+const { removeProduct, updateCartQuantity } = cartStore
 const { items } = storeToRefs(cartStore);
 </script>
 
@@ -20,6 +20,7 @@ const { items } = storeToRefs(cartStore);
       <ContentItem
         :key="productItem.product.id"
         :product="productItem"
+        :updateCartQuantity="updateCartQuantity"
       />
       <MyButton text="Удалить" @click="removeProduct(productItem.product.id)" />
     </div>
