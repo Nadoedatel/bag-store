@@ -3,8 +3,11 @@
 import ContentItem from "@/components/main/ContentItem.vue";
 import {useCartStore} from "@/stores/cart.ts";
 import MyButton from "@/components/ui/button/MyButton.vue";
+import {storeToRefs} from "pinia";
 
-const { items, removeProduct } = useCartStore()
+const cartStore = useCartStore()
+const { removeProduct } = cartStore
+const { items } = storeToRefs(cartStore);
 </script>
 
 <template>
@@ -18,7 +21,7 @@ const { items, removeProduct } = useCartStore()
         :key="productItem.product.id"
         :product="productItem"
       />
-      <MyButton @click="removeProduct(productItem.product.id)" />
+      <MyButton text="Удалить" @click="removeProduct(productItem.product.id)" />
     </div>
   </div>
 </template>

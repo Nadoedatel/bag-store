@@ -41,7 +41,7 @@ export function useCartLogic(itemsRef: Ref<CartItem[]>): CartLogic {
   }
 
   const removeProduct = (productId: number): void => {
-    itemsRef.value = itemsRef.value.filter(item => item.product.id === productId);
+    itemsRef.value = itemsRef.value.filter(item => item.product.id !== productId);
     saveCartToLocalStorage()
   }
 
