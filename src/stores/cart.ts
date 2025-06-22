@@ -8,10 +8,13 @@ export const useCartStore = defineStore('cart', () => {
 
   const {
     loadCartFromLocalStorage,
-    addToCart
-  } = useCartLogic();
+    addToCart,
+    clearCart,
+    updateCartQuantity,
+    removeProduct,
+  } = useCartLogic(items);
 
-  loadCartFromLocalStorage();
+  loadCartFromLocalStorage()
 
   const totalItems = computed(() => {
     return items.value.reduce((sum, item) => sum + item.quantity, 0);
@@ -20,5 +23,8 @@ export const useCartStore = defineStore('cart', () => {
     items,
     totalItems,
     addToCart,
+    clearCart,
+    updateCartQuantity,
+    removeProduct,
   }
 })

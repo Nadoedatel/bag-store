@@ -3,10 +3,10 @@ import ContentItem from "@/components/main/ContentItem.vue";
 import {onMounted, ref} from "vue";
 import {getProduct} from "@/constants/API/mockAPI.ts";
 import type {Product} from "@/constants/product.ts";
-import {useCartLogic} from "@/composable/Cart/addItemToCart.ts";
+import {useCartStore} from "@/stores/cart.ts";
 
 const arrProducts = ref< Product[] | null>(null);
-const { addToCart } = useCartLogic()
+const { addToCart } = useCartStore()
 async function getProducts() {
   try {
     const data = await fetch(`${getProduct}/product`);
