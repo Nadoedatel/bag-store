@@ -1,13 +1,13 @@
-import './assets/main.css'
+import './app/main.css'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 
-import App from './App.vue'
-import router from './router'
+import App from './app/App.vue'
+import router from './app/router'
 
-import i18n from './utils/i18n';
-import {initLanguage} from "@/utils/i18n-switcher.ts";
+import i18n from './shared/i18n';
+import {initLanguage} from "@/shared/i18n/i18n-switcher.ts";
 
 
 

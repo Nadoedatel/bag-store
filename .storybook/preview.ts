@@ -1,5 +1,5 @@
 import {Preview, setup} from '@storybook/vue3-vite'
-import i18n from "../src/utils/i18n";
+import i18n from "../src/shared/i18n";
 import '@/assets/main.css'
 
 setup((app) => {
