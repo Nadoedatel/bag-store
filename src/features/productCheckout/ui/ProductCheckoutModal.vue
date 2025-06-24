@@ -20,6 +20,7 @@ const modalStore = useModalStore();
 const quantity = ref(1);
 const customerName = ref('');
 const customerEmail = ref('');
+const customerPhone = ref('');
 const isLoading = ref(false);
 const errorMessage = ref<string | null>(null);
 
@@ -54,6 +55,7 @@ const submitOrder = async () => {
       quantity: quantity.value,
       customerName: customerName.value,
       customerEmail: customerEmail.value,
+      customerPhone: customerPhone.value,
     });
 
     // После успешного оформления закрываем модальное окно
@@ -71,49 +73,62 @@ const submitOrder = async () => {
 <template>
   <h2 class="text-2xl font-bold mb-4">Оформление заказа</h2>
 
-  <p v-if="props.data?.id" class="mb-4">
-    Вы оформляете товар с ID: <span class="font-semibold">{{ props.data.id }}</span>
-  </p>
-  <p v-else class="text-red-500 mb-4">ID товара не передан!</p>
+<!--  <p v-if="props.data?.id" class="mb-4">-->
+<!--    Вы оформляете товар с ID: <span class="font-semibold">{{ props.data.id }}</span>-->
+<!--  </p>-->
+<!--  <p v-else class="text-red-500 mb-4">ID товара не передан!</p>-->
 
   <form @submit.prevent="submitOrder">
-    <div class="mb-4">
-      <label for="quantity" class="block text-gray-700 text-sm font-bold mb-2">Количество:</label>
-      <input
-        type="number"
-        id="quantity"
-        v-model.number="quantity"
-        min="1"
-        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        required
-      />
-    </div>
-
-    <div class="mb-4">
-      <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Ваше имя:</label>
+    <label for="quantity" class="block text-gray-700 text-sm font-bold mb-2 pb-2 pt-2">Данные покупателя:</label>
+    <div class="mb-4 flex flex-col gap-2">
       <input
         type="text"
         id="name"
         v-model="customerName"
-        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        class="shadow appearance-none border w-full py-4 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        placeholder="Фамилия и имя*"
         required
       />
-    </div>
-
-    <div class="mb-6">
-      <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email:</label>
       <input
         type="email"
         id="email"
         v-model="customerEmail"
-        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        class="shadow appearance-none border w-full py-4 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        placeholder="Почта"
+        required
+      />
+      <input
+        type="text"
+        id="phone"
+        v-model="customerPhone"
+        class="shadow appearance-none border w-full py-4 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        placeholder="+7 (___) ___-____"
+        required
+      />
+    </div>
+    <label for="quantity" class="block text-gray-700 text-sm font-bold mb-2 pb-2 pt-2">Адрес доставки:</label>
+    <div class="mb-4 flex flex-col gap-2">
+      <input
+        type="text"
+        id="city"
+        v-model="customerPhone"
+        class="shadow appearance-none border w-full py-4 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        placeholder="Город*"
+        required
+      />
+      <input
+        type="text"
+        id="address"
+        v-model="customerPhone"
+        class="shadow appearance-none border w-full py-4 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        placeholder="Адрес*"
         required
       />
     </div>
 
     <p v-if="errorMessage" class="text-red-500 text-sm mb-4">{{ errorMessage }}</p>
 
-    <div class="flex items-center justify-between">
+    <div class="flex items-center justify-between pt-2">
       <button
         type="submit"
         :disabled="isLoading"

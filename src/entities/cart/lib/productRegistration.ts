@@ -21,7 +21,7 @@ export function productRegistration() {
     // Для лучшей производительности используй динамический импорт.
     // Это гарантирует, что ProductCheckoutModal будет загружен только тогда,
     // когда он действительно понадобится (т.е., при открытии модального окна).
-    () => import('@/features/productCheckout/ui/ProductCheckoutModal.vue'),
+    ProductCheckoutModal,
     dataForModal // Передаем данные в модальное окно
   );
 
