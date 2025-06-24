@@ -21,6 +21,8 @@ const quantity = ref(1);
 const customerName = ref('');
 const customerEmail = ref('');
 const customerPhone = ref('');
+const customerCity = ref('');
+const customerAddress = ref('');
 const isLoading = ref(false);
 const errorMessage = ref<string | null>(null);
 
@@ -56,6 +58,8 @@ const submitOrder = async () => {
       customerName: customerName.value,
       customerEmail: customerEmail.value,
       customerPhone: customerPhone.value,
+      customerCity: customerCity.value,
+      customerAddress: customerAddress.value,
     });
 
     // После успешного оформления закрываем модальное окно
@@ -111,7 +115,7 @@ const submitOrder = async () => {
       <input
         type="text"
         id="city"
-        v-model="customerPhone"
+        v-model="customerCity"
         class="shadow appearance-none border w-full py-4 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         placeholder="Город*"
         required
@@ -119,7 +123,7 @@ const submitOrder = async () => {
       <input
         type="text"
         id="address"
-        v-model="customerPhone"
+        v-model="customerAddress"
         class="shadow appearance-none border w-full py-4 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         placeholder="Адрес*"
         required
