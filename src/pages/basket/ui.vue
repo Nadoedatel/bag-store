@@ -9,6 +9,7 @@ import {productRegistration} from "@/entities/cart/lib/productRegistration.ts";
 const cartStore = useCartStore()
 const { removeProduct, updateCartQuantity } = cartStore
 const { items } = storeToRefs(cartStore);
+
 </script>
 
 <template>
